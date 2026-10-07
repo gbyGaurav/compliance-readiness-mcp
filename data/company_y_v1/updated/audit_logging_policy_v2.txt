@@ -1,0 +1,12 @@
+COMPANY Y
+Audit Logging Policy
+Version: 2.0
+
+Company Y collects authentication, application, and infrastructure logs.
+AI inference activity (queries, model/version used, requesting identity) and administrative changes must also be logged.
+Logs are written to tamper-evident, append-only WORM storage (e.g., S3 Object Lock in Compliance mode) with integrity hashes.
+Logs are retained for a minimum of 365 days.
+Logs are forwarded to the centralized SIEM in real time and reviewed by the Security Team for investigations.
+
+Owner: Infrastructure and Security Teams
+Review: Annual

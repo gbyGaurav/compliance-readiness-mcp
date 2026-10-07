@@ -1,0 +1,13 @@
+COMPANY Y
+Data Handling & Residency Policy
+Version: 2.0
+
+Company Y stores production data in cloud infrastructure.
+All customer training data, model checkpoints, inference prompts, and output vectors must reside exclusively within US sovereign cloud regions (AWS GovCloud (US) or Azure Government).
+Replication and disaster recovery must stay within US sovereign regions. Cross-border replication and multi-region fallback outside the continental US are prohibited.
+Remote access from non-US IP addresses and transit through non-US networks are prohibited.
+Sensitive workloads continue to use encryption and access controls.
+Exceptions require written approval from the Security Team.
+
+Owner: Infrastructure Team
+Review: Annual

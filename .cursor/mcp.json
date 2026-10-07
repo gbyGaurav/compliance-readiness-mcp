@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "consus-compliance": {
+      "command": "E:\\MCP 2\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "src.server"],
+      "cwd": "E:\\MCP 2",
+      "env": {
+        "PYTHONPATH": "E:\\MCP 2",
+        "LLM_PROVIDER": "fallback"
+      }
+    }
+  }
+}

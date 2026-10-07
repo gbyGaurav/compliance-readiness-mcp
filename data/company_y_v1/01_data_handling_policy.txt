@@ -1,0 +1,12 @@
+COMPANY Y
+Data Handling & Residency Policy
+Version: 1.0
+
+Company Y stores production data in cloud infrastructure. Production data may be replicated across multiple global regions for availability and disaster recovery.
+
+Approved cloud services may transfer data between regions when required for operational resilience.
+
+Sensitive workloads use encryption and access controls, but this policy does not require a US-only geographic boundary or prohibit international transit.
+
+Owner: Infrastructure Team
+Review: Annual
