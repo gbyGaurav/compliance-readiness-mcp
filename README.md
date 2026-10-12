@@ -1,154 +1,152 @@
 # Consus Compliance Readiness MCP
 
-An MCP server that helps companies check whether their internal policies are ready before deploying sensitive AI workloads on secure and compliant infrastructure.
+An MCP server that helps organizations identify security and compliance gaps in internal policies before deploying sensitive AI workloads.
 
-## 🎥 Demo
+## 1. Security Gaps
+
+Before deploying sensitive AI workloads, companies need to check whether their security policies meet the required standards.
+
+**Gap Filled by My MCP:** It helps companies find missing security policies, identify compliance gaps, and understand what needs to be fixed before deployment.
+
+## 2. MCP & Its Benefits
+
+Built using **Model Context Protocol (MCP)**, the server allows compatible AI clients to interact with compliance tools.
+
+### Key Features
+
+- Policy analysis using RAG
+- Compliance classification: `MATCH`, `PARTIAL`, `MISMATCH`
+- Remediation recommendations
+- Compliance task management
+- Requirement reassessment
+- Automated report generation
+
+### MCP Tools
+
+| Tool | Purpose |
+|---|---|
+| `register_company` | Register a company |
+| `scan_company_documents` | Discover policy documents |
+| `store_company_documents` | Process and index policies |
+| `analyze_compliance` | Identify compliance gaps |
+| `get_compliance_suggestions` | Recommend corrective actions |
+| `create_compliance_tasks` | Create remediation tasks |
+| `assign_compliance_task` | Assign tasks |
+| `update_task_status` | Track task progress |
+| `recheck_requirement` | Reassess requirements |
+| `generate_final_readiness_report` | Generate final report |
+
+## 3. Tech Stack & Environment
+
+| Technology | Purpose |
+|---|---|
+| Python | Backend development |
+| FastMCP | MCP server |
+| ChromaDB | Vector database for policy retrieval |
+| RAG + TF-IDF | Relevant policy evidence retrieval |
+| pypdf | PDF text extraction |
+| python-docx | DOCX text extraction |
+| ReportLab | PDF report generation |
+
+### Run the Project
+
+Clone the repository:
+
+```bash
+git clone https://github.com/gbyGaurav/compliance-readiness-mcp.git
+cd compliance-readiness-mcp
+```
+
+Install dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Run the demo:
+
+```bash
+python scripts/run_demo.py
+```
+
+## 4. Project Structure
+
+### System Design
+
+```text
+Company Policies
+       |
+       v
+Document Extraction
+       |
+       v
+Text Chunking
+       |
+       v
+ChromaDB Vector Storage
+       |
+       v
+RAG-Based Retrieval
+       |
+       v
+Compliance Analysis
+       |
+       v
+Gap Detection
+       |
+       v
+Remediation Tasks
+       |
+       v
+Requirement Reassessment
+       |
+       v
+Final Readiness Report
+```
+
+### Folder Structure
+
+```text
+compliance-readiness-mcp/
+|
+|-- data/
+|   |-- policies/
+|   |-- reports/
+|
+|-- docs/
+|
+|-- scripts/
+|
+|-- src/
+|   |-- database/
+|   |-- llm/
+|   |-- rag/
+|   |   |-- extractor.py
+|   |   |-- chunker.py
+|   |   |-- vector_store.py
+|   |
+|   |-- tools/
+|
+|
+|-- server.py
+|-- requirements.txt
+|-- README.md
+```
+
+## 5. Outputs
+
+- **Compliance Gap Report:** Identifies missing controls, findings, and recommended actions.
+- **Final Readiness Report:** Summarizes compliance results, remediation progress, and outstanding gaps.
+
+### Project Demo
 
 [Watch the Project Demo](https://drive.google.com/file/d/1hUFT4YFjgC1Kdc2DcukspOT6A_ypN3NA/view?usp=sharing)
 
----
+## Author
 
-## Why I Chose Consus
+**Gaurav Deore**
 
-I chose **Consus** because it is a real Y Combinator startup working on secure and compliant AI infrastructure for aerospace and defense organizations.
-
-What interested me was the problem that comes **before** a company uses such infrastructure:
-
-> Is the company itself ready from a compliance and security point of view?
-
-That question became the idea for my MCP project.
-
-## What Consus Does
-
-Consus focuses on secure AI infrastructure for sensitive aerospace and defense workloads. Its platform deals with areas such as ITAR, FedRAMP High, CUI, access restrictions, auditing, and secure infrastructure boundaries.
-
-My project does **not** copy or replace Consus. Instead, it works as a **customer-side compliance readiness layer** that can help an organization prepare before using secure AI infrastructure.
-
-| Consus | My Project |
-|---|---|
-| Secure AI infrastructure | Compliance readiness |
-| Runtime security | Pre-deployment assessment |
-| Infrastructure platform | Policy analysis |
-| Secure deployment environment | Gap detection and remediation |
-
----
-
-## What I Built
-
-I built a **Compliance Readiness MCP Server** that can:
-
-- Read company policies in PDF, DOCX, TXT and Markdown
-- Extract and chunk policy content
-- Use RAG to find relevant evidence
-- Compare policies with compliance requirements
-- Identify `MATCH`, `PARTIAL`, and `MISMATCH`
-- Generate remediation suggestions
-- Create and assign compliance tasks
-- Re-check updated policies
-- Generate compliance and readiness reports
-
----
-
-## How It Works
-
-text
-Company Policies
-       ↓
-Document Extraction
-       ↓
-Chunking + RAG
-       ↓
-Compliance Analysis
-       ↓
-MATCH / PARTIAL / MISMATCH
-       ↓
-Remediation Tasks
-       ↓
-Human Updates Policy
-       ↓
-Re-check
-       ↓
-Final Readiness Report
-       ↓
-Human Approval
-
-The AI helps with analysis and recommendations, but the final policy changes and approval remain with humans.
-RAG
-Instead of sending complete policy documents to the LLM, the system retrieves only the most relevant sections.
-Metric	Value
-Full repository	5,428 tokens
-Retrieved chunks	591 tokens
-Tokens saved	4,837
-Context reduction	89.11%
-
-
-This makes the compliance analysis more focused and reduces unnecessary context.
-MCP Tools
-Tool	Purpose
-register_company	Register a company
-scan_company_documents	Find policy documents
-store_company_documents	Process and index documents
-analyze_compliance	Analyze compliance
-get_compliance_suggestions	Suggest remediation
-create_compliance_tasks	Create tasks
-assign_compliance_task	Assign tasks
-update_task_status	Update task status
-recheck_requirement	Re-check a requirement
-generate_final_readiness_report	Generate final report
-
-
-Reports
-The system generates two main reports:
-1. Compliance Gap Report – shows missing controls, findings and recommended actions.
-2. Final Readiness Report – shows the final compliance status, resolved tasks and human sign-off section.
-Tech Stack
-Technology	Purpose
-Python	Backend
-FastMCP	MCP Server
-SQLite	Database
-RAG + TF-IDF	Policy retrieval
-Ollama	Local LLM evaluation
-pypdf	PDF processing
-python-docx	DOCX processing
-Pytest	Testing
-ReportLab	PDF reports
-
-
-Folder Structure
-compliance-readiness-mcp/
-│
-├── data/          # Policies and generated reports
-├── docs/          # Documentation
-├── scripts/       # Demo and utility scripts
-├── src/
-│   ├── database/  # SQLite database
-│   ├── llm/       # LLM evaluation
-│   ├── rag/       # RAG pipeline
-│   └── tools/     # MCP tools and reports
-├── tests/         # Automated tests
-├── server.py      # MCP server
-├── requirements.txt
-└── README.md
-
-Running the Project
-git clone https://github.com/gbyGaurav/compliance-readiness-mcp.git
-cd compliance-readiness-mcp
-uv pip install -r requirements.txt
-
-Run the tests:
-python -m pytest tests -v
-
-Run the demo:
-python scripts/run_demo.py
-
-Final Idea
-The idea is simple:
-Before deploying sensitive AI workloads, first check whether the organization is actually ready.
-
-Consus focuses on secure AI infrastructure, while this project focuses on the customer's compliance preparation before deployment.
-Disclaimer
-This is an independent educational/prototype project inspired by the publicly described problem space of Consus. It is not an official Consus product and does not use proprietary Consus data or documents.
-Author
-Gaurav Deore
 AI/ML & Data Science Engineer
-GitHub: https://github.com/gbyGaurav
+
+- [GitHub Profile](https://github.com/gbyGaurav)
+- [Project Repository](https://github.com/gbyGaurav/compliance-readiness-mcp)
