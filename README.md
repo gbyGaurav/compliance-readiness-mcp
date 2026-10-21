@@ -42,7 +42,7 @@ Built using **Model Context Protocol (MCP)**, the server allows compatible AI cl
 |---|---|
 | Python | Backend development |
 | FastMCP | MCP server |
-| ChromaDB | Vector database for policy retrieval |
+| SQLite | Lightweight database for storing company information, compliance results, tasks, and policy-related metadata |
 | RAG + TF-IDF | Relevant policy evidence retrieval |
 | pypdf | PDF text extraction |
 | python-docx | DOCX text extraction |
@@ -83,7 +83,7 @@ Document Extraction
 Text Chunking
        |
        v
-ChromaDB Vector Storage
+SQLite Database Storage
        |
        v
 RAG-Based Retrieval
@@ -126,7 +126,6 @@ compliance-readiness-mcp/
 |   |   |-- vector_store.py
 |   |
 |   |-- tools/
-|
 |
 |-- server.py
 |-- requirements.txt
